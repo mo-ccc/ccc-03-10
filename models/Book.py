@@ -1,5 +1,6 @@
 from main import db
 
+# A book model
 class Book(db.Model):
     __tablename__ = "books"
     

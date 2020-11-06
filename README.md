@@ -1,14 +1,18 @@
-         ___        ______     ____ _                 _  ___  
-        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
-       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
-      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
-     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
- ----------------------------------------------------------------- 
+This is a fully functional crud api for a postgresql database built in python using flask.
+It implements the mvc pattern and schemas.
 
-
-Hi there! Welcome to AWS Cloud9!
-
-To get started, create some files, play with the terminal,
-or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
-
-Happy coding!
+# installation instructions
+- clone this repository
+- ensure u have python3 on your local machine
+- change directory into this repository
+- create a python3 virtual environment: python -m venv venv
+- activate the virtual environment: venv/bin/activate on linux 
+- pip install -r requirements.txt
+- create a file name .env and copy and paste the following into it
+DB_NAME=
+HOST=
+DB_USER=
+DB_PASS=
+- fill in the fields with the required info
+- set the FLASK-APP environment variable: FLASK_APP=main.py on linux
+- run the flask app: flask run

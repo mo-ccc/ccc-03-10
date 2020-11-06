@@ -2,18 +2,20 @@ from models.Book import Book
 from schemas.BookSchema import book_schema, books_schema
 from main import db
 from flask import Blueprint, request, jsonify
+
+# books route set with a url prefix of /books
 books = Blueprint('books', __name__, url_prefix="/books")
 
 @books.route("/", methods=["GET"])
 def book_index():
-    #Return all books
+    # Return all books
     books = Book.query.all()
     print(books)
     return jsonify(books_schema.dump(books))
 
 @books.route("/", methods=["POST"])
 def book_create():
-    #Create a new book
+    # Create a new book
     data = book_schema.load(request.json)
     
     new_book = Book()
@@ -26,13 +28,13 @@ def book_create():
 
 @books.route("/<int:id>", methods=["GET"])
 def book_show(id):
-    #Return a single book
+    # Return a single book
     book = Book.query.get(id)
     return jsonify(book_schema.dump(book))
 
 @books.route("/<int:id>", methods=["PUT", "PATCH"])
 def book_update(id):
-    #Update a book
+    # Update a book
     data = book_schema.load(request.json)
     book = Book.query.get(id)
     book.title = data["title"]
@@ -42,6 +44,7 @@ def book_update(id):
 
 @books.route("/<int:id>", methods=["DELETE"])
 def book_delete(id):
+    # Delete a book
     book = Book.query.get(id)
     db.session.delete(book)
     db.session.commit()
