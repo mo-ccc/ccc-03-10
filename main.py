@@ -1,14 +1,12 @@
 from flask import Flask, request, jsonify, abort
-from database import cursor, connection
+from database import init_db
 import os
-from controllers import registerable_controllers
+
 
 app = Flask(__name__)
+db = init_db(app)
+
+from controllers import registerable_controllers
 
 for controller in registerable_controllers:
     app.register_blueprint(controller)
-
-cursor.execute("create table if not exists books (id serial PRIMARY KEY, title varchar);")
-connection.commit()
-
-
