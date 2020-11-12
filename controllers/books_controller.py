@@ -10,7 +10,6 @@ books = Blueprint('books', __name__, url_prefix="/books")
 def book_index():
     # Return all books
     books = Book.query.all()
-    print(books)
     return jsonify(books_schema.dump(books))
 
 @books.route("/", methods=["POST"])
