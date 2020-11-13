@@ -4,9 +4,11 @@ import os
 from flask import Flask, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_bcrypt import Bcrypt
 
 db = SQLAlchemy()
 ma = Marshmallow()
+bcrypt = Bcrypt()
 
 def create_app():
     app = Flask(__name__)
