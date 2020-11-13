@@ -3,7 +3,7 @@ from flask import Blueprint
 import random
 from main import bcrypt
 
-db_commands = Blueprint("db", __name__)
+db_commands = Blueprint("db-custom", __name__)
 
 @db_commands.cli.command("Wisdom")
 def wisdom():
@@ -17,6 +17,7 @@ def create_db():
 @db_commands.cli.command("drop")
 def drop_db():
     db.drop_all()
+    db.engine.execute("DROP TABLE IF EXISTS alembic_version;")
     print("tables dropped")
     
 @db_commands.cli.command("seed")
