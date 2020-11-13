@@ -8,17 +8,7 @@ It implements the mvc pattern and schemas.
 - create a python3 virtual environment: python -m venv venv
 - activate the virtual environment: venv/bin/activate on linux 
 - pip install -r requirements.txt
-- create a file name .env and copy and paste the following into it
-```
-DB_NAME=
-
-HOST=
-
-DB_USER=
-
-DB_PASS=
-```
-
+- rename .env.example to .env and edit the fields
 - fill in the fields with the required info
 - set the FLASK-APP environment variable: FLASK_APP=main.py on linux
 - run the flask app: flask run

@@ -5,6 +5,7 @@ dotenv.load_dotenv()
 
 class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    JWT_SECRET_KEY = os.getenv('SECRET_KEY')
     
     @property
     def SQLALCHEMY_DATABASE_URI(self):
@@ -20,7 +21,14 @@ class Development(Config):
     DEBUG = True
 
 class Production(Config):
-    pass
+    @property
+    def JWT_SECRET_KEY(self):
+        var = os.getenv("JWT_SECRET_KEY")
+        
+        if not var:
+            raise ValueError("JWT_SECRET_KEY is not set")
+        
+        return var
 
 class Testing(Config):
     TESTING = True
