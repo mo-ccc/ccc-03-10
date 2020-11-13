@@ -2,6 +2,7 @@ from models.Book import Book
 from schemas.BookSchema import book_schema, books_schema
 from main import db
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required
 
 # books route set with a url prefix of /books
 books = Blueprint('books', __name__, url_prefix="/books")
@@ -13,6 +14,7 @@ def book_index():
     return jsonify(books_schema.dump(books))
 
 @books.route("/", methods=["POST"])
+@jwt_required
 def book_create():
     # Create a new book
     data = book_schema.load(request.json)
@@ -32,6 +34,7 @@ def book_show(id):
     return jsonify(book_schema.dump(book))
 
 @books.route("/<int:id>", methods=["PUT", "PATCH"])
+@jwt_required
 def book_update(id):
     # Update a book
     data = book_schema.load(request.json)
