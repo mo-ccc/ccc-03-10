@@ -58,7 +58,7 @@ def book_image_show(book_id, user=None):
     return flask.Response(
         file_obj["Body"].read(),
         mimetype="image/*",
-        headers={"Content-Disposition": "attachment;filename=image"}
+        headers={"Content-Disposition": f"attachment;filename={book_image.filename}"}
     )
 
 @book_images.route("/", methods=["DELETE"])

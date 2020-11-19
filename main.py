@@ -18,6 +18,11 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object("default_settings.app_config")
     
+    # setup logger if in production mode
+    if app.config["ENV"] == "production":
+        from log_handlers import file_handler
+        app.logger.addHandler(file_handler)
+    
     # Initialise the connection to the database
     db.init_app(app)
     ma.init_app(app)
