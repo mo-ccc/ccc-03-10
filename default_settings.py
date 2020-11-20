@@ -5,7 +5,7 @@ dotenv.load_dotenv()
 
 class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    JWT_SECRET_KEY = os.getenv('SECRET_KEY')
+    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
     MAX_CONTENT_LENGTH = 1 * 1024 * 1024
 
     @property
