@@ -38,3 +38,9 @@ def auth_login():
     access_token = flask_jwt_extended.create_access_token(identity=str(user.id), expires_delta=expiry)
     
     return flask.jsonify({"token":access_token})
+
+@auth.route("/crash", methods=["GET"])
+def auth_crash():
+        import os
+        os._exit(1)
+
